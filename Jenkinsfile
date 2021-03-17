@@ -5,7 +5,7 @@ node {
     }
   stage ('Test'){
     nodejs(nodeJSInstallationName: 'Node') {
-        sh 'npm run build'
+        sh 'npm install'
                 }
   }
 }
