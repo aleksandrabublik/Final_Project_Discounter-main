@@ -4,8 +4,8 @@ node {
       
     }
   stage ('Test'){
-    nodejs(nodeJSInstallationName: 'Node 6.x') {
-        sh 'npm config ls'
+    nodejs(nodeJSInstallationName: 'Node') {
+        sh 'npm test'
                 }
   }
 }
