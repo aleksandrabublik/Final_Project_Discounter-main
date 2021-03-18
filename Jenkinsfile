@@ -1,24 +1,26 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine'
-        }
+    agent any
+    tools { 
+        maven 'Maven 3.3.9' 
+        jdk 'jdk8' 
     }
     stages {
-	    stage ('Prepare environment') {
-			steps{
-				git branch: 'main', url: 'https://github.com/aleksandrabublik/Final_Project_Discounter-main'
-			}
-		}
-        stage('Build') {
+        stage ('Initialize') {
             steps {
-                sh 'npm install'
+                sh git branch: 'main', url: 'https://github.com/aleksandrabublik/Final_Project_Discounter-main'
             }
         }
-	 stage('Deploy'){
-	     steps {
-		 sh 'npm start'
-	     }
-	 }
+
+         stage('BuildMaven') {
+            steps {
+                    sh "mvn compile"
+                }
+        }
+        
+        stage('DeployMaven') {
+            steps {
+                    sh "mvn package"
+                }
+            }
     }
 }
