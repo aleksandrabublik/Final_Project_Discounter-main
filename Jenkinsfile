@@ -11,15 +11,15 @@ pipeline {
             }
         }
 
-         stage('BuildMaven') {
+         stage('Build') {
             steps {
-                    sh "mvn compile"
+                    sh "npm install -g serve"
                 }
         }
         
         stage('DeployMaven') {
             steps {
-                    sh "mvn package"
+                    sh "serve -s build"
                 }
             }
     }
