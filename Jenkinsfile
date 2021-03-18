@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Checkout SCM'){
            steps{
-				git branch: 'main', url: 'https://github.com/aleksandrabublik/Final_Project_Discounter-main'
+		git branch: 'main', url: 'https://github.com/aleksandrabublik/Final_Project_Discounter-main'
 			}     
         }
 
