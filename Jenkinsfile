@@ -1,10 +1,7 @@
 #!/usr/bin/env groovy
-pipeline {
-  agent {
-    node {
-      label 'main'
-    }
-  }
+pipeline 
+  agent any
+
 
     stages {
         stage('Checkout SCM'){
