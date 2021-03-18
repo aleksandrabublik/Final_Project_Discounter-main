@@ -1,27 +1,17 @@
-pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine'
-        }
+node {
+    stage ('Prepare environment') {
+        git branch: 'main', url: 'https://github.com/aleksandrabublik/Final_Project_Discounter-main'
+      
     }
-    stages {
-	    stage ('Prepare environment') {
-			steps{
-				git branch: 'main', url: 'https://github.com/aleksandrabublik/Final_Project_Discounter-main'
-			}
-		}
-        stage('Build') {
-            steps {
-                sh 'npm install'
-            }
-        }
-	 stage('Deploy'){
-	     steps {
-		 sh 'npm start'
-	     }
-	 }
-    }
-}
+	stage ('Start'){
+		nodejs(nodeJSInstallationName: 'Node') {
+        sh 'npm install'
+                }
+	}
+	stage ('Build'){
+		sh 'npm start'
+	}
+  }
 }
 
   
