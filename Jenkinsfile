@@ -5,15 +5,10 @@ pipeline {
         jdk 'jdk8' 
     }
     stages {
-        stage ('Initialize') {
+        stage('build') { 
             steps {
-                sh git branch: 'mvn clean'
-            }
-        }
-        stage ('Install') {
-            steps {
-                sh git branch: 'mvn install'
-            }
+                sh 'mvn clean' sh 'mvn install' 
+            } 
         }
 
          stage('BuildMaven') {
