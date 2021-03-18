@@ -1,8 +1,7 @@
 pipeline {
     agent any
     tools { 
-        maven 'Maven 3.3.9' 
-        jdk 'jdk8' 
+        image 'node:6-alpine'  
     }
     stages {
         stage('build') { 
