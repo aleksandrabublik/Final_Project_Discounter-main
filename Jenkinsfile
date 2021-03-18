@@ -12,6 +12,6 @@ node {
 		sh 'npm run build'
 	}
   }
-} 
+
   
 
