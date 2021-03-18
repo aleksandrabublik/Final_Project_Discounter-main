@@ -1,17 +1,39 @@
-node {
-    stage ('Prepare environment') {
-        git branch: 'main', url: 'https://github.com/aleksandrabublik/Final_Project_Discounter-main'
-      
+#!/usr/bin/env groovy
+pipeline {
+  agent {
+    node {
+      label 'main'
     }
-	stage ('Start'){
-		nodejs(nodeJSInstallationName: 'Node') {
-        sh 'npm install'
-                }
-	}
-	stage ('Build'){
-		sh 'npm run build'
-	}
   }
+
+    stages {
+        stage('Checkout SCM'){
+           steps{
+				git branch: 'main', url: 'https://github.com/aleksandrabublik/Final_Project_Discounter-main'
+			}     
+        }
+
+        stage('Install modules'){
+            steps {
+                sh "npm install"
+            }
+        }
+
+        stage('Build'){
+            steps {
+                    sh "npm run build"
+                   
+            }    
+        }
+        }
+    }
+    post {
+        cleanup {
+            sh 'rm -rf node_modules'
+        }
+    }
+
+}
 
   
 
