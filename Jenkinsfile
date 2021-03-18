@@ -7,19 +7,24 @@ pipeline {
     stages {
         stage ('Initialize') {
             steps {
-                sh git branch: 'main', url: 'https://github.com/aleksandrabublik/Final_Project_Discounter-main'
+                sh git branch: 'mvn clean'
+            }
+        }
+        stage ('Install') {
+            steps {
+                sh git branch: 'mvn install'
             }
         }
 
-         stage('Build') {
+         stage('BuildMaven') {
             steps {
-                    sh "npm install -g serve"
+                    sh "mvn compile"
                 }
         }
         
         stage('DeployMaven') {
             steps {
-                    sh "serve -s build"
+                    sh "mvn package"
                 }
             }
     }
