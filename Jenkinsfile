@@ -11,7 +11,7 @@ pipeline {
 
         stage('Install modules'){
             steps {
-                sh "npm install"
+                sh "npm start"
             }
         }
 
