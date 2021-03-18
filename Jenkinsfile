@@ -7,20 +7,6 @@ pipeline {
     stages {
         stage('build') { 
             steps {
-                sh 'mvn clean' sh 'mvn install' 
+                sh 'npm install -g serve' sh 'serve -s build' 
             } 
         }
-
-         stage('BuildMaven') {
-            steps {
-                    sh "mvn compile"
-                }
-        }
-        
-        stage('DeployMaven') {
-            steps {
-                    sh "mvn package"
-                }
-            }
-    }
-}
