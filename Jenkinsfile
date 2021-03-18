@@ -1,7 +1,6 @@
 #!/usr/bin/env groovy
-pipeline 
+pipeline {
   agent any
-
 
     stages {
         stage('Checkout SCM'){
@@ -23,7 +22,5 @@ pipeline
             }    
         }
         }
-    }
+  
 
-
-}
