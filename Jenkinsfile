@@ -1,4 +1,9 @@
-node {
+pipeline {
+  agent any
+
+  tools {nodejs "nodejs"}
+
+stages {
     stage ('Prepare environment') {
         git branch: 'main', url: 'https://github.com/aleksandrabublik/Final_Project_Discounter-main'
       
@@ -12,6 +17,9 @@ node {
 	stage ('Build'){
 		sh 'npm audit'
 	}
+	stage('Example') {
+        sh 'npm config ls'
+      }
 }
   
 
