@@ -10,7 +10,7 @@ const Header = () => (
       <Link to="/">
         <figure className="header__logo">
           <Logo />
-          <figcaption className="header__logo-name">Discounter</figcaption>
+          <figcaption className="header__logo-name">Discounter!</figcaption>
         </figure>
       </Link>
       <Navigation />
