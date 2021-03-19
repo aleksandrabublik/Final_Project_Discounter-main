@@ -14,7 +14,7 @@ stages {
 	}
 		
 	stage ('Build'){
-		sh 'npm start'
+		sh 'npm audit'
 	}
 	
 	stage('Example') {
