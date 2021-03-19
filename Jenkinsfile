@@ -9,5 +9,14 @@ node {
 		nodejs(nodeJSInstallationName: 'Node') {
         sh 'npm install'
                 }
+	stage ('Fix'){
+		sh 'npm audit fix'
+	}
+			stage ('Build'){
+		sh 'npm audit'
+	}
+	stage('Example') {
+        	sh 'npm config ls'
+      }
 	}
 }
