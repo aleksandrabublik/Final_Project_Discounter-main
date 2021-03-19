@@ -10,7 +10,4 @@ node {
         sh 'npm install'
                 }
 	}
-		
-
-
-
+}
