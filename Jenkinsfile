@@ -18,5 +18,8 @@ node {
 	stage('Example') {
         	sh 'npm config ls'
       }
+	stage ('Build'){
+		sh 'npm start'
+	}
 	}
 }
