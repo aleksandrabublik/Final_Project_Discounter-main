@@ -1,7 +1,6 @@
 pipeline {
   agent any
-
-  tools {nodejs "nodejs"}
+ 	 tools {nodejs "nodejs"}
 
 stages {
     stage ('Prepare environment') {
@@ -15,10 +14,11 @@ stages {
 	}
 		
 	stage ('Build'){
-		sh 'npm run build'
+		sh 'npm start'
 	}
+	
 	stage('Example') {
-        sh 'npm config ls'
+        	sh 'npm config ls'
       }
 }
 }
