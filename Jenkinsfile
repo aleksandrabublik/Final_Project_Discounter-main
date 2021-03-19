@@ -15,7 +15,7 @@ stages {
 	}
 		
 	stage ('Build'){
-		sh 'npm run'
+		sh 'npm run build'
 	}
 	stage('Example') {
         sh 'npm config ls'
