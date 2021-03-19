@@ -21,6 +21,11 @@ pipeline {
 		 sh 'npm run build'
 	     }
 	 }
+	    stage('Run'){
+		steps {
+		    sh 'COPY --from=builder /react-ui/build /usr/share/nginx/'
+			    
+	    }
     }
 }
 System.setProperty("org.jenkinsci.plugins.durabletask.BourneShellScript.HEARTBEAT_CHECK_INTERVAL", "86400")
