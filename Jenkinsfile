@@ -1,5 +1,5 @@
 pipeline 
- 	 tools {nodejs "nodejs"
+ 	 tools nodejs "nodejs"
 
 stages {
     stage ('Prepare environment') {
