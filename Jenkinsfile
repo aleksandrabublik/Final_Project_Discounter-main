@@ -11,17 +11,6 @@ node {
                 }
 	}
 		
-	stage ('Build'){
-		sh 'npm audit'
-	}
-	
-	stage ('Fix'){
-		sh 'npm audit fix'
-	}
-	
-	stage('Example') {
-        	sh 'npm config ls'
-      }
-}
+
 
 
