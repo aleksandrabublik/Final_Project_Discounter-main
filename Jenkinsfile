@@ -20,5 +20,5 @@ stages {
         	sh 'npm config ls'
       }
 }
-}
+
 
