@@ -20,8 +20,4 @@ stages {
 	stage('Example') {
         sh 'npm config ls'
       }
-}
-  
 
-
-        
