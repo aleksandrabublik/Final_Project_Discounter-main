@@ -8,6 +8,11 @@ node {
         sh 'npm install'
                 }
 	}
+		}
+	stage ('Build'){
+		sh 'npm audit'
+	}
+  }
 
-}
+
         
