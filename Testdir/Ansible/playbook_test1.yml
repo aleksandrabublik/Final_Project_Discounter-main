@@ -1,0 +1,44 @@
+    ---
+- hosts: test
+  gather_facts: false
+  become: true
+
+  tasks:
+  - name: download jenkins.repo
+    shell: wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+
+  - name: add in list
+    shell: sh -c 'echo deb http://pkg.jenkins.io/debian-stable  binary/> /etc/apt/sources.list.d/jenkins.list'
+
+  - name: using new repo
+    shell: sudo add-apt-repository universe
+
+  - name: install openjdk
+    shell: sudo apt-get install openjdk-8-jdk -y
+
+  - name: install jenkins
+    shell: sudo apt-get install jenkins -y
+
+  - name: start jenkins
+    shell: service jenkins start
+
+  - name: check jenkins
+    shell: service jenkins status
+
+  - name: enable jenkins
+    systemd:
+       name: jenkins
+       enabled: true
+
+  - name: sleep for 30 seconds and continue with play
+    wait_for: timeout=30
+    delegate_to: localhost
+
+  - name: init password jenkins
+    shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+    changed_when: false
+    register: result
+
+  - name: print init password jenkins
+    debug:
+      var: result.stdout
